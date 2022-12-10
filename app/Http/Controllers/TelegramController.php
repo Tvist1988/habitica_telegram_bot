@@ -32,15 +32,11 @@ class TelegramController extends Controller
 
         $botman = BotManFactory::create($config, new LaravelCache);
 
-        $botman->hears('Hi', function (BotMan $bot) {
-            $bot->reply('Hello!');
-        });
-
         $botman->hears('/start', function (BotMan $bot) {
             $bot->startConversation(new \App\Conversations\Tsks);
         });
         $botman->hears('/help', function (BotMan $bot) {
-            $bot->reply('Это команда поддержки');
+            $bot->reply('Нашли ошибку в работе бота? По всем вопросам Вы можете обратиться на почту habiticabot@yandex.ru. Так же буду рад обратной связи и пожеланиям по добавлению нового функционала.');
 
         });
         $botman->fallback(function(BotMan $bot) {
